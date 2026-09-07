@@ -425,7 +425,7 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 1005;
       border-bottom: 1px solid transparent;
       transition: .35s
     }
@@ -554,89 +554,50 @@
     #mm {
       position: fixed;
       inset: 0;
-      z-index: 1005;
-      background: rgba(11, 11, 13, .98);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      z-index: 1001;
+      background: rgba(11, 11, 13, .97);
+      backdrop-filter: blur(14px);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      padding: 20px 28px 36px;
-      gap: 2px;
+      justify-content: center;
+      padding: 0 36px;
+      gap: 4px;
       opacity: 0;
       visibility: hidden;
-      transition: opacity .35s, visibility .35s;
-      overflow-y: auto;
+      transition: .4s
     }
 
     #mm.open {
       opacity: 1;
-      visibility: visible;
-    }
-
-    .mm-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      margin-bottom: 16px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .mm-close {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--line2);
-      color: var(--ink);
-      font-size: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all .25s ease;
-    }
-
-    .mm-close:hover,
-    .mm-close:active {
-      background: var(--acc);
-      color: #0b0b0d;
-      border-color: var(--acc);
-      transform: scale(1.08) rotate(90deg);
+      visibility: visible
     }
 
     #mm a {
       font-family: 'Space Grotesk';
-      font-size: 1.55rem;
+      font-size: 1.7rem;
       font-weight: 600;
       color: var(--mut);
-      padding: 10px 0;
+      padding: 9px 0;
       border-bottom: 1px solid var(--line);
-      transition: .25s;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      transition: .25s
     }
 
     #mm a:hover {
       color: var(--acc);
-      padding-left: 8px;
+      padding-left: 10px
     }
 
     #mm .mm-s {
       display: flex;
       gap: 14px;
-      margin-top: 24px;
-      padding-top: 10px;
+      margin-top: 28px
     }
 
     #mm .mm-s a {
-      border: 1px solid var(--line);
+      border: none;
       font-size: 1rem;
       padding: 0;
-      color: var(--dim);
+      color: var(--dim)
     }
 
     /* ═══════════════ HERO ═══════════════ */
@@ -2211,19 +2172,13 @@
 
   <!-- MOBILE MENU -->
   <div id="mm">
-    <div class="mm-head">
-      <a href="#home" class="brand" onclick="closeMm()"><span class="bx">S/A</span><span class="bn">sarthak<em>.arsul</em></span></a>
-      <button class="mm-close" id="mmClose" aria-label="Close menu">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-    <a href="#about">About <i class="fa-solid fa-arrow-right" style="font-size:.85rem;opacity:.4"></i></a>
-    <a href="#skills">Stack <i class="fa-solid fa-arrow-right" style="font-size:.85rem;opacity:.4"></i></a>
-    <a href="#projects">Projects <i class="fa-solid fa-arrow-right" style="font-size:.85rem;opacity:.4"></i></a>
-    <a href="#experience">Work <i class="fa-solid fa-arrow-right" style="font-size:.85rem;opacity:.4"></i></a>
-    <a href="#certifications">Awards <i class="fa-solid fa-arrow-right" style="font-size:.85rem;opacity:.4"></i></a>
-    <a href="#education">Education <i class="fa-solid fa-arrow-right" style="font-size:.85rem;opacity:.4"></i></a>
-    <a href="#contact">Contact <i class="fa-solid fa-arrow-right" style="font-size:.85rem;opacity:.4"></i></a>
+    <a href="#about">About</a>
+    <a href="#skills">Stack</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Work</a>
+    <a href="#certifications">Awards</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
     <div class="mm-s">
       <a class="sq" href="https://www.linkedin.com/in/sarthak-arsul-9877471b6/" target="_blank" aria-label="LinkedIn"><i
           class="fa-brands fa-linkedin-in"></i></a>
@@ -2846,10 +2801,10 @@
     $$('section[id]').forEach(s => sio.observe(s));
 
     /* ═══════════ mobile menu ═══════════ */
-    const bg = $('#burger'), mm = $('#mm'), mmClose = $('#mmClose');
+    const bg = $('#burger'), mm = $('#mm');
     function closeMm() { bg.classList.remove('on'); mm.classList.remove('open'); document.body.classList.remove('no-scroll'); }
     bg.addEventListener('click', () => { bg.classList.toggle('on'); mm.classList.toggle('open'); document.body.classList.toggle('no-scroll'); });
-    if (mmClose) mmClose.addEventListener('click', closeMm);
+    mm.addEventListener('click', e => { if (!e.target.closest('a')) closeMm(); });
     mm.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMm));
     addEventListener('keydown', e => { if (e.key === 'Escape') closeMm(); });
 
