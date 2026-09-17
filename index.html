@@ -1543,7 +1543,14 @@
       flex-wrap: wrap;
       position: relative;
       overflow: hidden;
-      margin-bottom: 20px
+      margin-bottom: 20px;
+      transition: transform .35s cubic-bezier(.16, 1, .3, 1), border-color .35s cubic-bezier(.16, 1, .3, 1), box-shadow .35s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .cert-hero:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200, 240, 77, .55);
+      box-shadow: 0 16px 36px -10px rgba(200, 240, 77, 0.12)
     }
 
     .cert-hero::after {
@@ -1556,6 +1563,10 @@
       background: linear-gradient(105deg, transparent, rgba(242, 239, 230, .09), transparent);
       transform: skewX(-18deg);
       animation: shn 5s ease-in-out infinite
+    }
+
+    .cert-hero:nth-of-type(2)::after {
+      animation-delay: 2.5s
     }
 
     @keyframes shn {
@@ -1579,7 +1590,14 @@
       font-size: 1.7rem;
       color: var(--acc);
       background: var(--bg);
-      flex-shrink: 0
+      flex-shrink: 0;
+      transition: transform .35s cubic-bezier(.16, 1, .3, 1), border-color .35s cubic-bezier(.16, 1, .3, 1), box-shadow .35s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .cert-hero:hover .cert-medal {
+      transform: scale(1.08) rotate(4deg);
+      border-color: var(--acc);
+      box-shadow: 0 0 20px rgba(200, 240, 77, .25)
     }
 
     .cert-bd {
@@ -1599,7 +1617,13 @@
       border: 1px solid var(--acc-line);
       padding: 5px 12px;
       border-radius: 99px;
-      margin-bottom: 12px
+      margin-bottom: 12px;
+      transition: background .3s ease, border-color .3s ease
+    }
+
+    .cert-hero:hover .cert-bd .cb {
+      border-color: var(--acc);
+      background: rgba(200, 240, 77, .12)
     }
 
     .cert-bd h3 {
@@ -2575,6 +2599,23 @@
             <h2>Certifications &amp; <em>Credentials</em></h2>
           </div>
           <span class="idx">05</span>
+        </div>
+
+        <!-- ⭐ ANTHROPIC / CLAUDE ACADEMY - FEATURED -->
+        <div class="cert-hero rv">
+          <div class="cert-medal"><i class="fa-solid fa-award"></i></div>
+          <div class="cert-bd">
+            <span class="cb"><i class="fa-solid fa-certificate"></i> Anthropic Certified</span>
+            <h3>Model Context Protocol: Advanced Topics</h3>
+            <div class="cm">
+              <span><i class="fa-solid fa-graduation-cap"></i>Claude Academy</span>
+              <span><i class="fa-regular fa-calendar"></i>Sep 2026</span>
+            </div>
+          </div>
+          <a class="lk solid"
+            href="https://academy.claude.com/verify/206a7d070498b1cb8e41f977fadfbdd6"
+            target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+            View Credential</a>
         </div>
 
         <!-- ⭐ ORACLE - FEATURED -->
